@@ -1,0 +1,337 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="signin.html">sign in</a></li>
+        <li><a href="map.html">Find Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetCrumbs - Baked With Love</title>
+
+    <style>
+       /* Hero Section */
+.hero {
+    padding: 60px;
+    animation: fadeIn 1.5s ease-in-out;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero.rise {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.llogo {
+    width: 250px;
+    height: 250px;
+    animation: bounce 2s infinite alternate;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.llogo.rise {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Info Section */
+.info-section {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.info-section.rise {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info-box h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    font-size: 1em;
+    color: #4e4e4e;
+    line-height: 1.5;
+}
+
+/* Products Section */
+.products-section {
+    padding: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.products-section.rise {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+.product-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.product-card p {
+    font-size: 1em;
+}
+
+/* About Section */
+.about-container {
+    max-width: 900px;
+    margin: 80px auto 0;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-container.rise {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-container h1 {
+    color: #d81b60;
+    font-size: 2.5em;
+}
+
+.about-container p {
+    font-size: 1.2em;
+    color: #4e4e4e;
+    line-height: 1.6;
+}
+
+/* Founders Section */
+.founders-section {
+    margin: 50px auto;
+    max-width: 1200px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.founders-section.rise {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.founders-section h2 {
+    font-size: 2em;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.founders-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.founder-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover; /* keeps aspect ratio and fills the 80x80 box */
+}
+
+    .founder-card {
+            width: 200px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+.founder-card h3 {
+    font-size: 1.2em;
+    color: #000000;
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    background: #f8bbd0;
+    padding: 20px;
+    color: #4a148c;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-15px);}
+}
+
+    </style>
+</head>
+<body>
+
+    
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>WELCOME TO <br> <strong>Hana's Bakery</strong></h1>
+        <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" class="llogo">
+        <br>
+      <button class="btn" onclick="window.location.href='Dashboard.html'">About Us</button>
+
+    </div>
+
+    <!-- Info Section -->
+    <div class="info-section">
+        <div class="info-box">
+            <img src="https://i.pinimg.com/originals/c4/78/46/c4784662097646d54ef383c71d6d3d68.gif" alt="Cakes">
+            <h3>Cakes</h3>
+            <p>Delightful layered cakes for every celebration.</p>
+        </div>
+        <div class="info-box">
+            <img src="https://i.pinimg.com/originals/39/ee/62/39ee622480267e432bc14505fcc87ea2.gif" alt="Pancakes">
+            <h3>Pancakes</h3>
+            <p>Colorful, fluffy, and perfect for every mood.</p>
+        </div>
+        <div class="info-box">
+            <img src="https://i.pinimg.com/originals/4c/e2/29/4ce229020b8aafefe9cfa61ce81d50d1.gif" alt="Cookies">
+            <h3>Cookies</h3>
+            <p>Crunchy, chewy, and freshly baked with love.</p>
+        </div>
+    </div>
+
+    <!-- Product Samples -->
+    <div class="products-section">
+        <h2>Our Bestsellers</h2>
+        <p>Sweet treats everyone loves!</p>
+        <div class="product-list">
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/b5/83/b5/b583b5617a9273163acf032f590095a3.jpg" alt="Chocolate Cake">
+                <h3>Chocolate Heaven</h3>
+                <p>Rich chocolate cake layered with fudge.</p>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/bb/73/a0/bb73a00e4da3684323795d47f2f2dd11.jpg" alt="Strawberry Cupcakes">
+                <h3>Strawberry Swirls</h3>
+                <p>Moist vanilla cupcakes with strawberry cream.</p>
+            </div>
+            
+        </div>
+        <button class="btn" onclick="window.location.href='Reviews.html'">Find More</button>
+    </div>
+
+      <!-- About Us Section -->
+    <div class="about-container">
+        <h1>About Hana's Bakery</h1>
+        <p>Welcome to <strong>Hana’s Bakery</strong> — where every treat is baked with love, joy, and a touch of magic. We specialize in handcrafted sweets that delight the senses and bring smiles to every occasion.</p>
+        <p>From layered cakes and gooey cookies to colorful pancakes and cupcakes, we believe in using quality ingredients and creative passion to craft unforgettable flavors.</p>
+        <p>Whether you're celebrating a birthday, hosting a brunch, or just craving something sweet, Hana’s Bakery is here to sprinkle your day with happiness.</p>
+    </div>
+
+    <!-- Founders Section -->
+    <div class="founders-section">
+    <h2>Meet Our Team</h2>
+    <div class="founders-container">
+        <div class="founder-card">
+            <img src="https://i.pinimg.com/736x/07/bf/57/07bf57ba271b9b4294cfaa2d05f56f33.jpg" alt="Founder">
+            <h3>Hanaa Nour</h3>
+        </div>
+    <div class="founder-card">
+                <img src="https://i.pinimg.com/736x/a7/22/7a/a7227a15e0ae9fa3aaa705e6154d97aa.jpg" alt="Founder">
+                <h3>Noura Nour</h3>
+            </div>
+          
+</div>
+</div>
+
+    <!-- Footer -->
+    <footer style="background: #f8bbd0; padding: 20px; color: #4a148c;">
+        <p>&copy; 2025 Hana's Bakery. Made with love and sugar 🍰</p>
+    </footer>
+
+<script>
+  // When elements are in viewport, add 'rise' class to trigger CSS transition
+ function onScrollRise() {
+  const elements = document.querySelectorAll('.hero, .llogo, .info-section, .products-section, .about-container, .founders-section');
+  const windowTop = window.scrollY;
+  const windowBottom = window.innerHeight + window.scrollY;
+
+  elements.forEach(el => {
+    const elementTop = el.offsetTop;
+    const elementBottom = elementTop + el.offsetHeight;
+
+    // Check if element is visible in viewport
+    if (elementBottom > windowTop + 100 && elementTop < windowBottom - 100) {
+      el.classList.add('rise');
+    } else {
+      el.classList.remove('rise');
+    }
+  });
+}
+
+window.addEventListener('scroll', onScrollRise);
+window.addEventListener('load', onScrollRise);
+
+
+  
+</script>
+
+</body>
+</html>

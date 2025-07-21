@@ -1,0 +1,207 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="signin.html">sign in</a></li>
+        <li><a href="map.html">Find Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hana's Bakery - Treats Gallery</title>
+    <style>
+      .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.item-card h3 {
+    margin-top: 10px;
+    font-size: 1.4em;
+}
+
+.item-card p {
+    font-size: 1em;
+}
+
+.item-card {
+  display: block; /* make anchor behave like a block */
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+ 
+}
+
+.item-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Our Delicious Treats</h1>
+    <div class="gallery"></div>
+
+    
+     <!-- Footer -->
+    <footer style="background: #f8bbd0; padding: 20px; color: #4a148c;">
+        <p>&copy; 2025 Hana's Bakery. Made with love and sugar 🍰</p>
+    </footer>
+
+</body>
+
+<script>
+    class Category {
+  constructor(name, imageSrc, href, description) {
+    this.name = name;
+    this.imageSrc = imageSrc;
+    this.href = href;
+    this.description = description;
+  }
+}
+
+
+const categories = [];
+
+// Create category objects based on your HTML data
+categories.push(new Category(
+  "Cakes",
+  "https://i.pinimg.com/originals/88/a9/20/88a9208a06f2a8d3e6869f863ffc9a51.gif",
+  "product.html?item=cakes",
+  "Fluffy and layered for every celebration."
+));
+
+categories.push(new Category(
+  "Pancakes",
+  "https://i.pinimg.com/originals/5f/b5/9e/5fb59e86c7dcd83610dd6b7e87588afe.gif",
+  "product.html?item=pancakes",
+  "Perfectly golden and stacked with love."
+));
+
+categories.push(new Category(
+  "Cookies",
+  "https://i.pinimg.com/originals/5b/14/9d/5b149daae26f10df4fe3cffbeaa980f5.gif",
+  "product.html?item=cookies",
+  "Crunchy on the outside, chewy on the inside."
+));
+
+categories.push(new Category(
+  "Cupcakes",
+  "https://i.pinimg.com/originals/44/4c/05/444c05f1a08a5e84117f0b81c5115399.gif",
+  "product.html?item=cupcakes",
+  "Mini treats topped with colorful swirls."
+));
+
+categories.push(new Category(
+  "Muffins",
+  "https://i.pinimg.com/originals/27/9f/38/279f38e2051bae0002c06542d3d8687f.gif",
+  "product.html?item=muffins",
+  "Soft, moist, and bursting with flavor."
+));
+
+categories.push(new Category(
+  "Macarons",
+  "https://i.pinimg.com/736x/b0/67/2c/b0672c515a02692d3a554acd73f0df22.jpg",
+  "product.html?item=macarons",
+  "Colorful and crispy with a creamy heart."
+));
+
+categories.push(new Category(
+  "Pies",
+  "https://i.pinimg.com/originals/4a/05/6c/4a056c2ed3897a0d93168061683f1d60.gif",
+  "product.html?item=pies",
+  "Golden crusts filled with fruity goodness."
+));
+
+categories.push(new Category(
+  "Donuts",
+  "https://i.pinimg.com/originals/29/a9/18/29a918bdd36aa1aa030bdb35698a9046.gif",
+  "product.html?item=donuts",
+  "Glazed, sprinkled, and oh-so-addictive."
+));
+
+categories.push(new Category(
+  "Brownies",
+  "https://i.pinimg.com/originals/16/b6/b5/16b6b5b1bed48c5d3976cd9aee52d1b8.gif",
+  "product.html?item=brownies",
+  "Dense, fudgy squares of chocolate bliss."
+));
+
+categories.push(new Category(
+  "Tarts",
+  "https://i.pinimg.com/originals/4b/ed/8a/4bed8abd4cbaed885b4f05eaba968af5.gif",
+  "product.html?item=tarts",
+  "Fruity, custardy, and perfectly crisp."
+));
+
+categories.push(new Category(
+  "Cheesecake",
+  "https://i.pinimg.com/originals/b3/9d/38/b39d389865704ca13048f9dbb4184e32.gif",
+  "product.html?item=cheesecake",
+  "Silky smooth and decadently rich."
+));
+
+categories.push(new Category(
+  "Croissants",
+  "https://i.pinimg.com/originals/0c/70/04/0c70044941f8eb2721448ad3dca6d575.gif",
+  "product.html?item=croissants",
+  "Buttery layers with a golden flaky crust."
+));
+
+categories.push(new Category(
+  "Churros",
+  "https://i.pinimg.com/originals/c9/38/ce/c938ce7cd58786a3cda789d50ddc2d2e.gif",
+  "product.html?item=churros",
+  "Crispy on the outside, warm and sweet inside."
+));
+
+
+function displayCategories(categoriesArray) {
+  const gallery = document.querySelector(".gallery");
+  gallery.innerHTML = ""; // Clear existing content if any
+
+  categoriesArray.forEach(category => {
+    const card = document.createElement("a");
+    card.className = "item-card";
+    card.href = category.href;
+
+    card.innerHTML = `
+      <img src="${category.imageSrc}" alt="${category.name}" />
+      <h3>${category.name}</h3>
+      <p>${category.description}</p>
+    `;
+
+    gallery.appendChild(card);
+  });
+}
+
+
+
+displayCategories(categories);
+
+</script>
+</html>

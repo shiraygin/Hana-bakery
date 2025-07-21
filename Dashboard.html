@@ -1,0 +1,281 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="signin.html">sign in</a></li>
+        <li><a href="map.html">Find Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SweetCrumbs Bakery - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+      #mainHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(248, 187, 208, 0.8);
+    transition: height 0.4s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+#mainHeader:hover {
+    height: 120px;
+    background-color: rgba(248, 187, 208, 0.95);
+}
+
+#mainHeader .header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 100%;
+    transition: padding 0.3s ease;
+}
+
+#mainHeader .logo {
+    display: flex;
+    align-items: center;
+}
+
+#mainHeader .logo img {
+    height: 40px;
+    transition: height 0.4s;
+}
+
+#mainHeader:hover .logo img {
+    height: 60px;
+}
+
+#mainHeader .logo h2 {
+    margin-left: 10px;
+    font-size: 1.2em;
+    font-family: 'Poppins', sans-serif;
+    color: #880e4f;
+    transition: font-size 0.4s;
+}
+
+#mainHeader:hover .logo h2 {
+    font-size: 1.6em;
+}
+
+#mainHeader nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+#mainHeader nav a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+    body {
+      margin: 0; 
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fce4ec, #fff3e0);
+      color: #880e4f;
+      min-height: 100vh;
+           padding-top: 100px; /* space for fixed header */
+     box-sizing: border-box;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      flex: 1 1 220px;
+      max-width: 280px;
+      padding: 25px 30px;
+      box-shadow: 0 2px 8px rgba(136,14,79,0.15);
+      text-align: center;
+    }
+    .stat-card h3 {
+      margin: 0 0 15px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .stat-card p {
+      font-size: 2.2rem;
+      margin: 0;
+      font-weight: 700;
+      color: #880e4f;
+    }
+    section.orders {
+      margin-top: 40px;
+    }
+    section.orders h2 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(136,14,79,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #fce4ec;
+      color: #550032;
+    }
+    th {
+      background: #f48fb1;
+      color: white;
+      font-weight: 600;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .actions {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background-color: #880e4f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      min-width: 180px;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #5a0030;
+    }
+    @media (max-width: 600px) {
+      .stat-card {
+        max-width: 100%;
+      }
+      .actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <main>
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Total Sales Today</h3>
+        <p>$1,240</p>
+      </div>
+      <div class="stat-card">
+        <h3>Orders Pending</h3>
+        <p>12</p>
+      </div>
+      <div class="stat-card">
+        <h3>Products in Stock</h3>
+        <p>58</p>
+      </div>
+      <div class="stat-card">
+        <h3>New Customers</h3>
+        <p>5</p>
+      </div>
+    </div>
+
+    <section class="orders">
+      <h2>Recent Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#1023</td>
+            <td>Fatima Al-Sayed</td>
+            <td>Chocolate Cake</td>
+            <td>Preparing</td>
+            <td>$35.00</td>
+          </tr>
+          <tr>
+            <td>#1022</td>
+            <td>Ahmed Al-Rashid</td>
+            <td>Blueberry Muffin</td>
+            <td>Delivered</td>
+            <td>$7.50</td>
+          </tr>
+          <tr>
+            <td>#1021</td>
+            <td>Layla Omar</td>
+            <td>Vanilla Pancakes</td>
+            <td>Pending</td>
+            <td>$15.00</td>
+          </tr>
+          <tr>
+            <td>#1020</td>
+            <td>Omar Khaled</td>
+            <td>Cookies Box</td>
+            <td>Delivered</td>
+            <td>$20.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="actions">
+      <button class="btn" onclick="alert('Add new product feature coming soon!')">Add New Product</button>
+      <button class="btn" onclick="alert('View reports feature coming soon!')">View Reports</button>
+      <button class="btn" onclick="alert('Manage orders feature coming soon!')">Manage Orders</button>
+    </div>
+  </main>
+</body>
+</html>

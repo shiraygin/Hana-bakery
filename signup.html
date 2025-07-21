@@ -1,0 +1,285 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="map.html">Find Us</a></li>
+  
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up | Hana's Bakery</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fce4ec, #fff3e0);
+  color: #880e4f;
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0 20px;
+
+     padding-top: 20px;
+     box-sizing: border-box;
+}
+
+
+    .container {
+      display: flex;
+      max-width: 700px;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      min-height: 600px;
+      max-height: 90vh;
+    }
+
+    .info-section,
+    .signup-section {
+      flex: 1;
+      padding: 40px 30px;
+    }
+
+    .info-section {
+      background: #f8bbd0;
+      color: #4a0033;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px 0 0 15px;
+    }
+
+    .info-section h3 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .info-section p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .info-section button {
+      background-color: #880e4f;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .info-section button:hover {
+      background-color: #5a0030;
+      transform: scale(1.05);
+    }
+
+    .signup-section {
+      overflow-y: auto;
+    }
+
+    .signup-section h2 {
+      font-size: 2em;
+      color: #880e4f;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      color: #880e4f;
+      font-weight: 500;
+      font-size: 0.95em;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 2px solid #f8bbd0;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+      border-color: #880e4f;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      background-color: #f48fb1;
+      border: none;
+      color: white;
+      padding: 14px 0;
+      font-size: 1.1em;
+      border-radius: 25px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #880e4f;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 680px) {
+      body {
+        align-items: flex-start;
+        overflow: auto;
+      }
+
+      .container {
+        flex-direction: column;
+        max-height: none;
+        height: auto;
+      }
+
+      .info-section {
+        border-radius: 15px 15px 0 0;
+        padding: 30px 20px;
+      }
+
+      .signup-section {
+        border-radius: 0 0 15px 15px;
+        padding: 30px 20px;
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="info-section">
+      <h3>Welcome Back!</h3>
+      <p>If you already have an account, please sign in to continue.</p>
+      <button onclick="window.location.href='signin.html'">Sign In</button>
+    </div>
+
+    <div class="signup-section">
+      <h2>Create Account</h2>
+      <form id="signupForm" novalidate>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="Name" placeholder="Jane Doe" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" placeholder="you@example.com" required />
+
+        <label for="number">Phone Number</label>
+        <input type="text" id="number" name="number" placeholder="05xxxxxxxx" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="Password" placeholder="Create a password" required />
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="ConfirmPassword" placeholder="Repeat password" required />
+
+        <label for="accountType">Account Type</label>
+        <select name="account_type" id="accountType" required>
+          <option value="">Select Account Type</option>
+          <option value="Costumer">Costumer</option>
+          <option value="Admin">Admin</option>
+        </select>
+
+        <input type="text" name="specialization" id="specializationField"
+          placeholder="Specialization (for tutors only)" style="display: none" />
+
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const accountTypeSelect = document.getElementById('accountType');
+    const specializationField = document.getElementById('specializationField');
+
+    accountTypeSelect.addEventListener('change', () => {
+      if (accountTypeSelect.value === 'tutor') {
+        specializationField.style.display = 'block';
+        specializationField.required = true;
+      } else {
+        specializationField.style.display = 'none';
+        specializationField.required = false;
+        specializationField.value = '';
+      }
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const email = form.Email.value.trim();
+      const number = form.number.value.trim();
+      const password = form.Password.value;
+      const confirmPassword = form.ConfirmPassword.value;
+      const accountType = form.account_type.value;
+      const specialization = form.specialization.value.trim();
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      const phonePattern = /^\d{10,11}$/;
+      if (!phonePattern.test(number)) {
+        alert('Phone number must be 10 or 11 digits only.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+      if (!passwordPattern.test(password)) {
+        alert('Password must be at least 8 characters long and include at least one letter, one number, and one special character.');
+        return;
+      }
+
+      if (accountType === 'tutor' && specialization.length === 0) {
+        alert('Please enter your specialization.');
+        return;
+      }
+
+      alert('Account created successfully! (Demo only, no backend)');
+      form.reset();
+      specializationField.style.display = 'none';
+      specializationField.required = false;
+    });
+  </script>
+</body>
+</html>

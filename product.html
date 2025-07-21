@@ -1,0 +1,779 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="map.html">Find Us</a></li>
+    
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details</title>
+
+  
+  <style>
+#product-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#title {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+#desc {
+  font-size: 1.1em;
+  color: #555;
+}
+
+#not-found {
+  color: red;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 50px;
+  text-align: center;
+}
+
+iframe {
+  width: 100%;
+  height: 80px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.treat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  aspect-ratio: 1 / 1;
+  text-align: center;
+  overflow: hidden;
+}
+
+.treat-card img {
+  width: 50%;
+  height: auto;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.treat-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+}
+
+
+.button-wrapper {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.treat-info button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.treat-info button:hover {
+  background-color: #218838;
+}
+
+
+/* 🛒 Add to Cart Button */
+.treat-card button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.treat-card button:hover {
+  background-color: #218838;
+}
+
+.treat-card button.added {
+  background-color: #218838;
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* 🛒 Cart Icon */
+#cart-icon {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  user-select: none;
+  z-index: 1000;
+}
+
+#cart-count {
+  background: #fff;
+  color: #28a745;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 6px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+#cart-modal.hidden {
+  display: none;
+}
+
+#cart-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+#cart-popup {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+#close-cart {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+#cart-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#cart-items button.remove-item {
+  background: transparent;
+  border: none;
+  color: #e3342f;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 🛒 Buy Button */
+#buy-button {
+  margin-top: 15px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+#buy-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#buy-button .tick {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  color: #28a745;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#buy-button.success .tick {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+}
+
+/* 🟢 Count Animation */
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+#cart-count.animate {
+  animation: bounce 0.3s ease;
+}
+
+#cart-modal.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+#add-treat-button {
+  position: absolute;
+  top: 70px;
+  right: 120px;
+  background-color: #f48fb1;  /* soft pink */
+  color: #4a148c;             /* deep purple */
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(244, 143, 177, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  outline: none;
+  display: inline-block;
+}
+
+#add-treat-button:hover {
+  background-color: #ce93d8; /* lighter purple-pink */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(206, 147, 216, 0.6);
+}
+
+#add-treat-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(206, 147, 216, 0.4);
+}
+
+</style>
+
+</head>
+<body>
+ <div id="header"></div>
+<div id="add-treat-wrapper" style="text-align:center; margin: 20px;">
+  <button id="add-treat-button" style="padding: 10px 20px; font-size: 1em; cursor: pointer;">Add New Treat</button>
+</div>
+
+  <div id="product-container">
+    <img id="image" src="" alt="Product Image" />
+    <h1 id="title">Loading...</h1>
+    <p id="desc"></p>
+  </div>
+
+  <div id="not-found" style="display:none;">Sorry, product not found.</div>
+
+<!-- Cart Icon -->
+<div id="cart-icon" title="View Cart">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Cart Modal Popup -->
+<div id="cart-modal" class="hidden">
+  <div id="cart-popup">
+    <button id="close-cart">&times;</button>
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+      <p>Your cart is empty.</p>
+    </div>
+   <button id="buy-button">
+  Buy Now
+  <span class="tick">&#10003;</span>
+</button>
+
+  </div>
+</div>
+
+
+<script>
+  
+  
+    
+class Treat {
+  constructor(name, description, price, aroma, image, categoryKey) {
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.aroma = aroma;
+    this.image = image;
+    this.categoryKey = categoryKey; // this is for filtering
+    this.types = [];
+  }
+
+  addType(name, description, image) {
+    this.types.push({ name, description, image });
+  }
+
+  displayInfo() {
+    return {
+      name: this.name,
+      description: this.description,
+      price: this.price,
+      aroma: this.aroma,
+      image: this.image,
+      types: this.types,
+    };
+  }
+}
+
+
+
+// Object to hold arrays for each category by key
+const treatCategories = {
+  cakes: [],
+  pancakes: [],
+  cookies: [],
+  cupcakes: [],
+  muffins: [],
+  pastries: [],
+  macarons: [],
+  pies: [],
+  donuts: [],
+  brownies: [],
+  tarts: [],
+  cheesecake: [],
+  croissants: [],
+  churros: []
+};
+
+
+
+// Cakes
+treatCategories.cakes.push(
+  new Treat("Chocolate Cake", "Moist chocolate delight", 20, "Chocolate", "https://i.pinimg.com/736x/09/2a/8e/092a8ea6b3efab45df09c85352d29281.jpg", "cakes"),
+  new Treat("Vanilla Cake", "Fluffy and creamy", 18, "Vanilla", "https://i.pinimg.com/736x/4a/eb/3e/4aeb3e41056bf014e0c9cf546a342848.jpg", "cakes"),
+  new Treat("Red Velvet", "With cream cheese frosting", 22, "Sweet cream", "https://i.pinimg.com/736x/04/4c/fb/044cfbebc29d9f6ba33c4c8d9c4288df.jpg", "cakes"),
+  new Treat("Carrot Cake", "Spiced with nuts", 19, "Cinnamon", "https://i.pinimg.com/736x/28/e0/97/28e0978197ece049045eab4dbc2aee32.jpg", "cakes"),
+  new Treat("Lemon Cake", "Zesty and light", 17, "Lemon", "https://i.pinimg.com/736x/10/f5/9d/10f59da124342fa1971b08e612e7a572.jpg", "cakes")
+);
+
+// Pancakes
+treatCategories.pancakes.push(
+  new Treat("Classic Pancakes", "Golden and fluffy", 12, "Butter", "https://i.pinimg.com/736x/ea/58/de/ea58de84d2c5329d97f1751be8de3611.jpg", "pancakes"),
+  new Treat("Blueberry Pancakes", "Burst of blueberries", 13, "Berry", "https://i.pinimg.com/736x/0e/ae/a3/0eaea3e6cb6be43e4e099148ffdb355d.jpg", "pancakes"),
+  new Treat("Banana Pancakes", "Sweet and soft", 12, "Banana", "https://i.pinimg.com/736x/1f/37/d8/1f37d88c76b5fac0b863fa836d8df398.jpg", "pancakes"),
+  new Treat("Chocolate Chip Pancakes", "Melty chips inside", 14, "Chocolate", "https://i.pinimg.com/736x/92/89/51/928951ae333ff97d094db014344b7711.jpg", "pancakes"),
+  new Treat("Oatmeal Pancakes", "Healthy and hearty", 11, "Oats", "https://i.pinimg.com/736x/7c/f3/99/7cf3995337fa2f412b658be9974ad44a.jpg", "pancakes")
+);
+
+// Cookies
+treatCategories.cookies.push(
+  new Treat("Chocolate Chip", "Classic favorite", 3, "Chocolate", "https://i.pinimg.com/736x/9f/bd/f8/9fbdf88e00352f91dadf9eb2b04a3ede.jpg", "cookies"),
+  new Treat("Oatmeal Raisin", "Chewy goodness", 3, "Cinnamon", "https://i.pinimg.com/736x/10/a0/32/10a03268019f1722131ede5bea0cffbf.jpg", "cookies"),
+  new Treat("Peanut Butter", "Rich nutty taste", 4, "Peanut", "https://i.pinimg.com/736x/d3/26/a5/d326a5841cb1fe3e6d6a3896779bc255.jpg", "cookies"),
+  new Treat("Sugar Cookie", "Simple and sweet", 2.5, "Vanilla", "https://i.pinimg.com/736x/2d/69/41/2d6941eec5daea4cf3d590b8920fff4d.jpg", "cookies"),
+  new Treat("Double Chocolate", "Extra indulgent", 4, "Chocolate", "https://i.pinimg.com/736x/46/81/16/4681168dad2826a4f26b11f2bd9ff864.jpg", "cookies")
+);
+
+// Cupcakes
+treatCategories.cupcakes.push(
+  new Treat("Vanilla Cupcake", "Light and fluffy", 3, "Vanilla", "https://i.pinimg.com/736x/c9/be/42/c9be42abc077f53732dd05fb47074806.jpg", "cupcakes"),
+  new Treat("Chocolate Cupcake", "With ganache topping", 3.5, "Chocolate", "https://i.pinimg.com/736x/98/af/fa/98affa76cc428fd281ac302707d1feba.jpg", "cupcakes"),
+  new Treat("Red Velvet Cupcake", "Mini version", 4, "Cream cheese", "https://i.pinimg.com/736x/6e/56/20/6e5620c7749554c12f227fdb9c94132f.jpg", "cupcakes"),
+  new Treat("Strawberry Cupcake", "Topped with fruit", 3.75, "Strawberry", "https://i.pinimg.com/736x/66/87/d5/6687d5a4eb74f295f5e797bdb0bcdde5.jpg", "cupcakes"),
+  new Treat("Funfetti Cupcake", "Colorful sprinkles", 3.25, "Vanilla", "https://i.pinimg.com/736x/21/92/3f/21923fa81cf33cd7f83e2a96593b1338.jpg", "cupcakes")
+);
+// Muffins
+treatCategories.muffins.push(
+  new Treat("Blueberry Muffin", "Juicy berries inside", 3.5, "Berry", "https://i.pinimg.com/736x/6b/da/79/6bda79a8e5cfbd111a839cc8a96cc9c1.jpg", "muffins"),
+  new Treat("Chocolate Muffin", "Rich cocoa flavor", 3.5, "Chocolate", "https://i.pinimg.com/736x/bf/92/17/bf9217aeeebedcf064bbd9aef54fc096.jpg", "muffins"),
+  new Treat("Banana Nut Muffin", "Moist and crunchy", 3.25, "Banana", "https://i.pinimg.com/736x/e5/5e/c1/e55ec1bd489b901589c1397016551dc1.jpg", "muffins"),
+  new Treat("Bran Muffin", "High fiber", 3, "Wheat", "https://i.pinimg.com/736x/db/9b/3b/db9b3be27e8cb2fa4784e2cb0319c83e.jpg", "muffins"),
+  new Treat("Lemon Poppy Seed", "Bright and tasty", 3.5, "Lemon", "https://i.pinimg.com/736x/03/91/eb/0391eb30ddee9e0570c8773f36ba4f50.jpg", "muffins")
+);
+
+// Macarons
+treatCategories.macarons.push(
+  new Treat("Vanilla Macaron", "Light and sweet", 2.5, "Vanilla", "https://i.pinimg.com/736x/10/08/20/100820cb93c576f289de2804714a1c7c.jpg", "macarons"),
+  new Treat("Raspberry Macaron", "Tangy and bright", 2.75, "Raspberry", "https://i.pinimg.com/736x/d8/54/2f/d8542f2b0109d7a136246d76ee72329b.jpg", "macarons"),
+  new Treat("Chocolate Macaron", "Rich cocoa", 3, "Chocolate", "https://i.pinimg.com/736x/47/86/c5/4786c57cc86cff8d53687f7ab178b69c.jpg", "macarons"),
+  new Treat("Pistachio Macaron", "Nutty flavor", 3, "Pistachio", "https://i.pinimg.com/736x/c9/63/42/c963420abdda565d1f08260e62caa4cf.jpg", "macarons"),
+  new Treat("Lemon Macaron", "Zesty and fresh", 2.75, "Lemon", "https://i.pinimg.com/736x/a5/30/34/a530347d5d3c57d4a7671e859f5862da.jpg", "macarons")
+);
+
+// Pies
+treatCategories.pies.push(
+  new Treat("Apple Pie", "Classic cinnamon apple", 15, "Cinnamon", "https://i.pinimg.com/736x/4b/70/44/4b704448f408deb438903cb67e0b2620.jpg", "pies"),
+  new Treat("Pumpkin Pie", "Spiced pumpkin filling", 16, "Nutmeg", "https://i.pinimg.com/736x/23/ef/7f/23ef7f44ceef6e2ed69bdd5f0a8e6b97.jpg", "pies"),
+  new Treat("Pecan Pie", "Sweet and nutty", 17, "Pecan", "https://i.pinimg.com/736x/4a/2a/09/4a2a0980a9b0b506ebb16cd2048c4cca.jpg", "pies"),
+  new Treat("Cherry Pie", "Tart cherry filling", 15, "Cherry", "https://i.pinimg.com/736x/20/64/72/20647248ee2da4e88c6ffd5562ec926c.jpg", "pies"),
+  new Treat("Blueberry Pie", "Fresh blueberries", 16, "Berry", "https://i.pinimg.com/736x/c9/59/17/c95917df54f87cec26f3295e9c52834a.jpg", "pies")
+);
+
+// Donuts
+treatCategories.donuts.push(
+  new Treat("Glazed Donut", "Sweet glaze", 2, "Sugar", "https://i.pinimg.com/736x/b5/6f/5e/b56f5eb281e2b9cd22e5279eb923c456.jpg", "donuts"),
+  new Treat("Chocolate Donut", "Chocolate icing", 2.5, "Chocolate", "https://i.pinimg.com/736x/55/f1/c1/55f1c1db9a37a27e3e40eef9cd51cfa0.jpg", "donuts"),
+  new Treat("Sprinkle Donut", "Colorful sprinkles", 2.5, "Vanilla", "https://i.pinimg.com/736x/05/b1/e9/05b1e957ba70dc5aae061e4dfad17455.jpg", "donuts"),
+  new Treat("Filled Donut", "Strawberry jam center", 3, "Strawberry", "https://i.pinimg.com/736x/c0/e4/13/c0e413df7b2740532b122c42839a2573.jpg", "donuts"),
+  new Treat("Cinnamon Sugar Donut", "Cinnamon coated", 2.25, "Cinnamon", "https://i.pinimg.com/736x/01/a6/bb/01a6bb2a17b41824341ef51c5391d972.jpg", "donuts")
+);
+
+// Brownies
+treatCategories.brownies.push(
+  new Treat("Fudge Brownie", "Rich and dense", 3, "Chocolate", "https://i.pinimg.com/736x/29/80/33/298033d9fe7f11a3ab566c336f623e61.jpg", "brownies"),
+  new Treat("Walnut Brownie", "With crunchy walnuts", 3.5, "Nutty", "https://i.pinimg.com/736x/b0/29/62/b029620e4bfda9a6585c3b252356b0db.jpg", "brownies"),
+  new Treat("Caramel Brownie", "Caramel drizzle", 3.75, "Caramel", "https://i.pinimg.com/736x/e7/ba/4e/e7ba4ebefb73e06ad2d1b1557f788381.jpg", "brownies"),
+  new Treat("Peanut Butter Brownie", "Swirled peanut butter", 4, "Peanut", "https://i.pinimg.com/736x/30/46/96/3046961cc876af856c5523e462e7fceb.jpg", "brownies"),
+  new Treat("Espresso Brownie", "Coffee infused", 4, "Coffee", "https://i.pinimg.com/736x/e4/f8/ed/e4f8ed5720e683e28f511e245efbf4cc.jpg", "brownies")
+);
+
+// Tarts
+treatCategories.tarts.push(
+  new Treat("Lemon Tart", "Tangy and sweet", 5, "Lemon", "https://i.pinimg.com/736x/29/fd/bc/29fdbc4edbe4dfbd1fe78eb346c020a5.jpg", "tarts"),
+  new Treat("Fruit Tart", "Fresh fruit topping", 5.5, "Mixed fruit", "https://i.pinimg.com/736x/30/b6/b3/30b6b39f8778b253d957f17bb64cb592.jpg", "tarts"),
+  new Treat("Chocolate Tart", "Dark chocolate filling", 6, "Chocolate", "https://i.pinimg.com/736x/13/f8/68/13f868b7e7bfac91a3957c99670df6c0.jpg", "tarts"),
+  new Treat("Almond Tart", "Crunchy almond crust", 5.75, "Almond", "https://i.pinimg.com/736x/23/7a/51/237a515280374cbe8e33aa995aa635b7.jpg", "tarts"),
+  new Treat("Caramel Tart", "Sweet caramel layer", 5.5, "Caramel", "https://i.pinimg.com/736x/40/3f/82/403f8214946158c910fccbfcfaf7da78.jpg", "tarts")
+);
+
+// Cheesecake
+treatCategories.cheesecake.push(
+  new Treat("Classic Cheesecake", "Rich and creamy", 6, "Cream cheese", "https://i.pinimg.com/736x/dc/3b/a6/dc3ba61b62d6be6c61dbb3cda7ff8693.jpg", "cheesecake"),
+  new Treat("Strawberry Cheesecake", "With fresh strawberries", 6.5, "Strawberry", "https://i.pinimg.com/736x/de/a0/1a/dea01a87b4e0389b06ea43a19e6af30c.jpg", "cheesecake"),
+  new Treat("Chocolate Cheesecake", "Decadent chocolate", 7, "Chocolate", "https://i.pinimg.com/736x/64/9f/b9/649fb99f243a0c7040123f25f8fa59c0.jpg", "cheesecake"),
+  new Treat("Blueberry Cheesecake", "Berry topping", 6.5, "Blueberry", "https://i.pinimg.com/736x/86/8e/63/868e63f0a0770b8b4074ffc267e5c503.jpg", "cheesecake"),
+  new Treat("Lemon Cheesecake", "Zesty flavor", 6.25, "Lemon", "", "cheesecake")
+);
+
+// Croissants
+treatCategories.croissants.push(
+  new Treat("Butter Croissant", "Flaky and buttery", 3.5, "Butter", "https://i.pinimg.com/736x/05/4b/1a/054b1ae2136808ae87e264fb7724f4c3.jpg", "croissants"),
+  new Treat("Chocolate Croissant", "Filled with chocolate", 4, "Chocolate", "https://i.pinimg.com/736x/33/ed/74/33ed747434e1cf2e2d4b32c2f3e03a71.jpg", "croissants"),
+  new Treat("Almond Croissant", "Topped with almonds", 4.5, "Almond", "https://i.pinimg.com/736x/bf/d4/f5/bfd4f5ee142352e984768b0fec0b35b5.jpg", "croissants"),
+  new Treat("meat & Cheese Croissant", "Savory delight", 5, "Cheese", "https://i.pinimg.com/736x/d6/d1/1f/d6d11f135a72a6f4b13e9b43230d701c.jpg", "croissants"),
+  new Treat("Spinach Croissant", "With spinach filling", 4.75, "Spinach", "https://i.pinimg.com/736x/23/6c/54/236c549d79cc3fe59e004415074b15d1.jpg", "croissants")
+);
+
+// Churros
+treatCategories.churros.push(
+  new Treat("Classic Churros", "Cinnamon sugar coated", 3, "Cinnamon", "https://i.pinimg.com/736x/40/13/98/40139888d9dba80ceda446f8679209aa.jpg", "churros"),
+  new Treat("Chocolate Churros", "With chocolate dip", 3.5, "Chocolate", "https://i.pinimg.com/736x/de/1d/8a/de1d8a72afcf77c790b304e4c352b773.jpg", "churros"),
+  new Treat("Caramel Churros", "With caramel drizzle", 3.75, "Caramel", "https://i.pinimg.com/736x/35/b3/35/35b335974f393f3d20c8a194709e9c5f.jpg", "churros"),
+  new Treat("Stuffed Churros", "Filled with dulce de leche", 4, "Dulce de leche", "https://i.pinimg.com/736x/b9/b2/bd/b9b2bd38da52bcba812a3b29f9b631a6.jpg", "churros"),
+  new Treat("Spicy Churros", "With a hint of chili", 3.5, "Chili", "https://i.pinimg.com/736x/08/04/f4/0804f47277eb7d39eb268dcd2863ce49.jpg", "churros")
+);
+
+function addNewTreat() {
+  const SECRET_PASSWORD = "sweetsecret"; // set your password here
+  const enteredPassword = prompt("Please enter the password to add a new treat:");
+  
+  if (enteredPassword !== SECRET_PASSWORD) {
+    alert("Incorrect password! Access denied.");
+    return; // stop here if wrong password
+  }
+
+  if (!itemKey || !treatCategories[itemKey]) {
+    alert("Cannot add treat: invalid category.");
+    return;
+  }
+
+  const name = prompt("Enter the treat name:");
+  if (!name) return alert("Name is required.");
+
+  const description = prompt("Enter the description:");
+  if (!description) return alert("Description is required.");
+
+  const priceInput = prompt("Enter the price:");
+  const price = parseFloat(priceInput);
+  if (isNaN(price) || price <= 0) return alert("Invalid price.");
+
+  const aroma = prompt("Enter the aroma:");
+  if (!aroma) return alert("Aroma is required.");
+
+  const image = prompt("Enter the image URL:");
+  if (!image) return alert("Image URL is required.");
+
+  // Create new Treat and add it to category array
+  const newTreat = new Treat(name, description, price, aroma, image, itemKey);
+  treatCategories[itemKey].push(newTreat);
+
+  // Re-display treats including the new one
+  displayTreats(itemKey);
+}
+
+
+document.getElementById("add-treat-button").addEventListener("click", addNewTreat);
+
+
+const cart = [];
+
+const cartIcon = document.getElementById("cart-icon");
+const cartModal = document.getElementById("cart-modal");
+const cartItemsContainer = document.getElementById("cart-items");
+const cartCount = document.getElementById("cart-count");
+const closeCartBtn = document.getElementById("close-cart");
+const buyButton = document.getElementById("buy-button");
+
+
+buyButton.addEventListener("click", () => {
+  // Your existing buy logic here
+  if (cart.length === 0) return;
+
+
+  cart.length = 0;
+  updateCartDisplay();
+  showCartCount();
+
+  // Add success class to show tick
+  buyButton.classList.add("success");
+
+  // Remove tick after 1 second
+  setTimeout(() => {
+    buyButton.classList.remove("success");
+  }, 1000);
+});
+
+
+function addToCart(treat) {
+  cart.push(treat);
+  updateCartDisplay();
+  showCartCount();
+}
+
+function removeFromCart(index) {
+  const itemElements = cartItemsContainer.querySelectorAll("li");
+  const itemToRemove = itemElements[index];
+
+  // Animate fade out
+  itemToRemove.style.transition = "opacity 0.3s ease";
+  itemToRemove.style.opacity = "0";
+
+  // Remove from array and update after animation
+  setTimeout(() => {
+    cart.splice(index, 1);
+    updateCartDisplay();
+    showCartCount();
+  }, 300);
+}
+
+
+function updateCartDisplay() {
+  cartItemsContainer.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+    buyButton.disabled = true;
+    return;
+  }
+
+  const ul = document.createElement("ul");
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+    total += item.price;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "×";
+    removeBtn.classList.add("remove-item");
+    removeBtn.title = "Remove item";
+    removeBtn.onclick = () => removeFromCart(index);
+
+    li.appendChild(removeBtn);
+    ul.appendChild(li);
+  });
+
+  cartItemsContainer.appendChild(ul);
+
+  // 💰 Add total price element
+  const totalPrice = document.createElement("p");
+  totalPrice.style.fontWeight = "bold";
+  totalPrice.style.marginTop = "10px";
+  totalPrice.innerHTML = `Total: $${total.toFixed(2)}`;
+  cartItemsContainer.appendChild(totalPrice);
+
+  buyButton.disabled = false;
+}
+
+
+function showCartCount() {
+  cartCount.textContent = cart.length;
+
+  // Add animation class
+  cartCount.classList.add("animate");
+  
+  // Remove animation class after animation ends to allow repeat
+  cartCount.addEventListener("animationend", () => {
+    cartCount.classList.remove("animate");
+  }, { once: true });
+}
+
+
+cartIcon.addEventListener("click", () => {
+  cartModal.classList.remove("hidden");
+  updateCartDisplay();
+});
+
+closeCartBtn.addEventListener("click", () => {
+  cartModal.classList.add("hidden");
+});
+
+// Close modal if click outside popup
+cartModal.addEventListener("click", (e) => {
+  if (e.target === cartModal) {
+    cartModal.classList.add("hidden");
+  }
+});
+
+buyButton.addEventListener("click", () => {
+  if (cart.length === 0) return;
+
+  alert(`Thank you for your purchase of ${cart.length} item(s)!`);
+  cart.length = 0; // Clear cart
+  updateCartDisplay();
+  showCartCount();
+
+  // Animate fade out then hide modal
+  cartModal.classList.add("fade-out");
+  cartModal.addEventListener("animationend", () => {
+    cartModal.classList.add("hidden");
+    cartModal.classList.remove("fade-out");
+  }, { once: true });
+});
+
+
+
+function displayTreats(itemKey) {
+  const container = document.getElementById("product-container");
+  const notFound = document.getElementById("not-found");
+
+  if (itemKey && treatCategories[itemKey]) {
+    container.innerHTML = ""; // Clear existing content
+
+    treatCategories[itemKey].forEach((treat, index) => {
+      const card = document.createElement("div");
+      card.classList.add("treat-card");
+
+     
+  card.innerHTML = `
+  <img src="${treat.image}" alt="${treat.name}" />
+  <div class="treat-info">
+    <h3>${treat.name}</h3>
+    <p>${treat.description}, Aroma:</strong> ${treat.aroma}</p>
+    
+    <div class="button-wrapper">
+      <P><strong>Price:</strong> $${treat.price.toFixed(2)}<strong> |&nbsp </p>
+      <button data-category="${itemKey}" data-index="${index}">Add to Cart</button>
+    </div>
+  </div>
+`;
+
+
+
+
+      container.appendChild(card);
+    });
+
+    container.style.display = "grid";
+    notFound.style.display = "none";
+
+    // Add event listeners to "Add to Cart" buttons
+    container.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", () => {
+        const category = button.getAttribute("data-category");
+        const idx = button.getAttribute("data-index");
+
+        addToCart(treatCategories[category][idx]);
+
+        // Animate the button
+        button.classList.add("added");
+        setTimeout(() => button.classList.remove("added"), 200);
+      });
+    });
+
+  } else {
+    container.style.display = "none";
+    notFound.style.display = "block";
+  }
+}
+
+    
+
+const params = new URLSearchParams(window.location.search);
+const itemKey = params.get("item"); // e.g. "cakes"
+displayTreats(itemKey);
+
+ 
+</script>
+
+ <!-- Footer -->
+    <footer style="background: #f8bbd0; padding: 20px; color: #4a148c;">
+        <p>&copy; 2025 Hana's Bakery. Made with love and sugar 🍰</p>
+    </footer>
+
+</body>
+</html>

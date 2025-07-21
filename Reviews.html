@@ -1,0 +1,300 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="homepage.html" class="logo" aria-label="SweetCrumbs Homepage">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </a>
+
+    <!-- Navigation -->
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="map.html">Find Us</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <style>
+    #mainHeader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(248, 187, 208, 0.8);
+      transition: height 0.4s ease, background-color 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    #mainHeader:hover {
+      height: 120px;
+      background-color: rgba(248, 187, 208, 0.95);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      height: 100%;
+      transition: padding 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 40px;
+      transition: height 0.4s;
+    }
+
+    #mainHeader:hover .logo img {
+      height: 60px;
+    }
+
+    .logo h2 {
+      margin-left: 10px;
+      font-size: 1.2em;
+      font-family: 'Poppins', sans-serif;
+      color: #880e4f;
+      transition: font-size 0.4s;
+    }
+
+    #mainHeader:hover .logo h2 {
+      font-size: 1.6em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #880e4f;
+    }
+  </style>
+</header>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Reviews | SweetCrumbs Bakery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fce4ec, #fff3e0);
+      color: #880e4f;
+      padding-top: 100px;
+    }
+
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px 50px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .review-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .review-card h4 {
+      margin: 0;
+      font-weight: 600;
+      color: #4a0033;
+    }
+
+    .review-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .review-card .stars {
+      color: #ffc107;
+    }
+
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    form h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #880e4f;
+      margin-bottom: 15px;
+    }
+
+    form label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #f8bbd0;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    form button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #880e4f;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #5a0030;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section>
+  <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Top Rated Treats</h3>
+  <div class="reviews" id="topTreats">
+    <div class="review-card">
+      <img src="https://i.pinimg.com/736x/09/2a/8e/092a8ea6b3efab45df09c85352d29281.jpg" alt="Chocolate Cake" style="width: 100%; border-radius: 10px;">
+      <h4>Chocolate Cake</h4>
+      <div class="stars">★★★★★</div>
+      <p>Moist chocolate delight with rich flavor. Customer favorite!</p>
+    </div>
+    <div class="review-card">
+      <img src="https://i.pinimg.com/736x/0e/ae/a3/0eaea3e6cb6be43e4e099148ffdb355d.jpg" alt="Blueberry Pancakes" style="width: 100%; border-radius: 10px;">
+      <h4>Blueberry Pancakes</h4>
+      <div class="stars">★★★★☆</div>
+      <p>Bursting with berries — a sweet morning treat!</p>
+    </div>
+    <div class="review-card">
+      <img src="https://i.pinimg.com/736x/9f/bd/f8/9fbdf88e00352f91dadf9eb2b04a3ede.jpg" alt="Chocolate Chip Cookie" style="width: 100%; border-radius: 10px;">
+      <h4>Chocolate Chip Cookie</h4>
+      <div class="stars">★★★★★</div>
+      <p>Classic favorite that melts in your mouth.</p>
+    </div>
+  </div>
+</section>
+
+    <div class="reviews" id="reviewContainer">
+      <div class="review-card">
+        <h4>Sarah Al-Dosari</h4>
+        <div class="stars">★★★★★</div>
+        <p>The chocolate cake was heavenly! Thank you SweetCrumbs for making my birthday so sweet.</p>
+      </div>
+      <div class="review-card">
+        <h4>Omar Nasser</h4>
+        <div class="stars">★★★★☆</div>
+        <p>Loved the cookies! The shop is cozy and smells amazing.</p>
+      </div>
+    </div>
+
+    <form id="reviewForm">
+      <h3>Leave a Review</h3>
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="e.g. Aisha Khan" required />
+
+      <label for="rating">Rating</label>
+      <select id="rating" required>
+        <option value="">Choose</option>
+        <option value="5">★★★★★ - Excellent</option>
+        <option value="4">★★★★☆ - Very Good</option>
+        <option value="3">★★★☆☆ - Good</option>
+        <option value="2">★★☆☆☆ - Fair</option>
+        <option value="1">★☆☆☆☆ - Poor</option>
+      </select>
+
+      <label for="message">Your Review</label>
+      <textarea id="message" rows="4" placeholder="What did you love (or not)?" required></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('reviewForm');
+    const container = document.getElementById('reviewContainer');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const rating = document.getElementById('rating').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !rating || !message) {
+        alert('Please fill all fields');
+        return;
+      }
+
+      const starSymbols = '★★★★★☆☆☆☆☆'.slice(5 - rating, 10 - rating);
+      const card = document.createElement('div');
+      card.classList.add('review-card');
+      card.innerHTML = `
+        <h4>${name}</h4>
+        <div class="stars">${starSymbols}</div>
+        <p>${message}</p>
+      `;
+
+      container.prepend(card);
+      form.reset();
+      alert('Thank you for your review!');
+    });
+  </script>
+</body>
+</html>

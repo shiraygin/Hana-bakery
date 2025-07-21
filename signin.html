@@ -1,0 +1,247 @@
+<!-- header.html -->
+<header id="mainHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+      <h2>SweetCrumbs</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="cats.html">Shop</a></li>
+        <li><a href="map.html">Find Us</a></li>
+   
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bakery Sign In / Sign Up</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fce4ec, #fff3e0);
+      color: #880e4f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0 20px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      max-width: 700px;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      min-height: 600px;
+      max-height: 90vh;
+    }
+
+    .signin-section,
+    .signup-section {
+      flex: 1;
+      padding: 40px 30px;
+      overflow-y: auto;
+    }
+
+    .signin-section {
+      border-right: 1px solid #f8bbd0;
+    }
+
+    h2,
+    h3 {
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    h2 {
+      color: #880e4f;
+      font-size: 2em;
+    }
+
+    h3 {
+      color: #aa4277;
+      font-size: 1.7em;
+    }
+
+    p.separator {
+      color: #cc9ab8;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .error-message {
+      color: #d81b60;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      color: #880e4f;
+      font-weight: 500;
+      font-size: 0.95em;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 2px solid #f8bbd0;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #880e4f;
+      outline: none;
+    }
+
+    button {
+      background-color: #f48fb1;
+      border: none;
+      color: white;
+      padding: 14px 0;
+      font-size: 1.1em;
+      border-radius: 25px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background-color: #880e4f;
+      transform: scale(1.05);
+    }
+
+    .forgot-password-container {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .forgot-password {
+      color: #880e4f;
+      font-size: 0.9em;
+      text-decoration: none;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .signup-section {
+      background: #f8bbd0;
+      color: #4a0033;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 15px 15px 0;
+    }
+
+    .signup-section p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .signup-button {
+      background-color: #880e4f;
+      padding: 15px 0;
+      font-size: 1.1em;
+      border-radius: 25px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    .signup-button:hover {
+      background-color: #5a0030;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 680px) {
+      body {
+        align-items: flex-start;
+        overflow: auto;
+      }
+
+      .container {
+        flex-direction: column;
+        border-radius: 15px;
+        max-height: none;
+      }
+
+      .signin-section,
+      .signup-section {
+        border: none !important;
+        padding: 30px 20px;
+        max-height: none;
+      }
+
+      .signup-section {
+        border-radius: 0 0 15px 15px !important;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="signin-section">
+      <h2>Sign In</h2>
+      <p class="separator">or use your email to sign in</p>
+
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+
+        <div class="forgot-password-container">
+          <a href="#" class="forgot-password">Forgot your password?</a>
+        </div>
+
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+
+    <div class="signup-section">
+      <h3>Hello, Friend!</h3>
+      <p>Enter your personal details and start your delicious journey with us.</p>
+      <button class="signup-button" onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+  </div>
+</body>
+
+</html>
