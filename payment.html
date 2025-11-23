@@ -1,0 +1,308 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - SweetCrumbs</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #fce4ec, #fff3e0);
+    }
+
+    /* Reuse header style idea */
+    header {
+      background-color: rgba(248, 187, 208, 0.9);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo h2 {
+      margin: 0;
+      color: #880e4f;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #880e4f;
+    }
+
+    /* Checkout layout */
+    .checkout-wrapper {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 2fr 1.5fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    .card h1,
+    .card h2 {
+      margin-top: 0;
+      color: #4a148c;
+    }
+
+    .order-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+
+    .order-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+    }
+
+    .order-total {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: right;
+    }
+
+    .empty-message {
+      color: #b71c1c;
+      font-weight: 600;
+    }
+
+    /* Payment form */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+
+    .pay-button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      background-color: #28a745;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .pay-button:hover {
+      background-color: #218838;
+    }
+
+    .success-message {
+      margin-top: 15px;
+      color: #2e7d32;
+      font-weight: 600;
+      display: none;
+    }
+
+    footer {
+      background: #f8bbd0;
+      padding: 15px;
+      text-align: center;
+      color: #4a148c;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .checkout-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="header-container">
+      <div class="logo">
+        <img src="image-removebg-preview.png" alt="SweetCrumbs Logo" />
+        <h2>SweetCrumbs</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cats.html">Shop</a></li>
+          <li><a href="map.html">Find Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Checkout Content -->
+  <div class="checkout-wrapper">
+    <!-- Order Summary -->
+    <div class="card">
+      <h1>Order Summary</h1>
+      <ul id="order-list" class="order-list"></ul>
+      <p id="order-empty" class="empty-message" style="display:none;">Your cart is empty.</p>
+      <p id="order-total" class="order-total"></p>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="card">
+      <h2>Payment Details</h2>
+      <form id="payment-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input id="name" type="text" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input id="card-number" type="text" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required />
+        </div>
+
+        <div class="form-group">
+          <label for="expiry">Expiry Date</label>
+          <input id="expiry" type="month" required />
+        </div>
+
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input id="cvv" type="password" maxlength="4" required />
+        </div>
+
+        <button type="submit" class="pay-button">Pay Now</button>
+        <p class="success-message" id="success-message">Payment successful! Thank you for your order 💖</p>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hana's Bakery. Made with love and sugar 🍰</p>
+  </footer>
+
+  <script>
+    // Load cart from localStorage
+    const orderList = document.getElementById("order-list");
+    const orderTotal = document.getElementById("order-total");
+    const orderEmpty = document.getElementById("order-empty");
+
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const total = localStorage.getItem("cartTotal") || "0.00";
+
+    if (cart.length === 0) {
+      orderEmpty.style.display = "block";
+      orderTotal.textContent = "";
+    } else {
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span>${item.name}</span>
+          <span>BHD ${item.price.toFixed(2)}</span>
+        `;
+        orderList.appendChild(li);
+      });
+
+      orderTotal.textContent = `Total: BHD ${parseFloat(total).toFixed(2)}`;
+    }
+
+    // Simple payment handler (front-end only)
+    const paymentForm = document.getElementById("payment-form");
+    const successMessage = document.getElementById("success-message");
+
+    paymentForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+
+      // Fake processing
+      successMessage.style.display = "block";
+
+      // Clear cart data after "payment"
+      localStorage.removeItem("cart");
+      localStorage.removeItem("cartTotal");
+
+      orderList.innerHTML = "";
+      orderTotal.textContent = "";
+      orderEmpty.style.display = "block";
+
+      // Optionally go back to shop after a short delay
+      setTimeout(() => {
+        window.location.href = "cats.html";
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>
