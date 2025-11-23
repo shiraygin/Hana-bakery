@@ -578,24 +578,6 @@ const closeCartBtn = document.getElementById("close-cart");
 const buyButton = document.getElementById("buy-button");
 
 
-buyButton.addEventListener("click", () => {
-  // Your existing buy logic here
-  if (cart.length === 0) return;
-
-
-  cart.length = 0;
-  updateCartDisplay();
-  showCartCount();
-
-  // Add success class to show tick
-  buyButton.classList.add("success");
-
-  // Remove tick after 1 second
-  setTimeout(() => {
-    buyButton.classList.remove("success");
-  }, 1000);
-});
-
 
 function addToCart(treat) {
   cart.push(treat);
@@ -692,18 +674,16 @@ cartModal.addEventListener("click", (e) => {
 buyButton.addEventListener("click", () => {
   if (cart.length === 0) return;
 
-  alert(`Thank you for your purchase of ${cart.length} item(s)!`);
-  cart.length = 0; // Clear cart
-  updateCartDisplay();
-  showCartCount();
+  // Calculate total and save cart info for the payment page
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
 
-  // Animate fade out then hide modal
-  cartModal.classList.add("fade-out");
-  cartModal.addEventListener("animationend", () => {
-    cartModal.classList.add("hidden");
-    cartModal.classList.remove("fade-out");
-  }, { once: true });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("cartTotal", total.toFixed(2));
+
+  // Go to payment page
+  window.location.href = "payment.html";
 });
+
 
 
 
